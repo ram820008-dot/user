@@ -1,0 +1,122 @@
+
+    <div style={{ width: "400px", margin: "auto", fontFamily: "Arial" }}>
+      <h2>User Registration Form</h2>
+
+      <form onSubmit={handleSubmit}>
+        {/* Name */}
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter Name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+        <div style={{ color: "red" }}>{errors.name}</div>
+
+        <br />
+
+        {/* Email */}
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter Email"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <div style={{ color: "red" }}>{errors.email}</div>
+
+        <br />
+
+        {/* Password */}
+        <input
+          type="password"
+          name="password"
+          placeholder="Enter Password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <div style={{ color: "red" }}>{errors.password}</div>
+
+        <br />
+
+        {/* Gender */}
+        <label>Gender:</label><br />
+        <input
+          type="radio"
+          name="gender"
+          value="Male"
+          checked={formData.gender === "Male"}
+          onChange={handleChange}
+        /> Male
+
+        <input
+          type="radio"
+          name="gender"
+          value="Female"
+          checked={formData.gender === "Female"}
+          onChange={handleChange}
+        /> Female
+
+        <div style={{ color: "red" }}>{errors.gender}</div>
+
+        <br />
+
+        {/* Hobbies */}
+        <label>Hobbies:</label><br />
+        <input
+          type="checkbox"
+          value="Reading"
+          checked={formData.hobbies.includes("Reading")}
+          onChange={handleHobbies}
+        /> Reading
+
+        <input
+          type="checkbox"
+          value="Gaming"
+          checked={formData.hobbies.includes("Gaming")}
+          onChange={handleHobbies}
+        /> Gaming
+
+        <input
+          type="checkbox"
+          value="Sports"
+          checked={formData.hobbies.includes("Sports")}
+          onChange={handleHobbies}
+        /> Sports
+
+        <div style={{ color: "red" }}>{errors.hobbies}</div>
+
+        <br /><br />
+
+        <button type="submit">Register</button>
+      </form>
+
+      {/* Display Data */}
+      {users.length > 0 && (
+        <div>
+          <h3>Registered Users</h3>
+          <table border="1" cellPadding="5">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((u, i) => (
+                <tr key={i}>
+                  <td>{u.name}</td>
+                  <td>{u.email}</td>
+                  <td>{u.gender}</td>
+                  <td>{u.hobbies.join(", ")}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </div>
+  );
+};
